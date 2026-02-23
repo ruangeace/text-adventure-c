@@ -34,11 +34,11 @@ Understanding of memory in C
 Control over dynamic data structures
 Program organization in medium-sized projects
 
+Logical thinking in system design
+This project represents a solid foundation in core C programming and systems-level development.
+
 To compile:
 gcc main.c gamelib.c
 
 To run:
 ./a.out
-Logical thinking in system design
-
-This project represents a solid foundation in core C programming and systems-level development.
