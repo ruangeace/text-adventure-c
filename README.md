@@ -16,11 +16,17 @@ Technical Concepts
 This project demonstrates practical use of:
 
 Pointers
+
 Dynamic memory allocation (malloc, free)
+
 Singly linked lists
+
 Struct-based data modeling
+
 Modular programming (multiple source files)
+
 Game state management
+
 Manual memory lifecycle control
 
 Rooms, enemies, and progression are represented through linked structures.
