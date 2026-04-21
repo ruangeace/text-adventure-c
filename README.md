@@ -1,4 +1,4 @@
-#Text-Adventure-C
+#  Text-Adventure-C
 Text-based adventure game written in C as a university project.
 
 The project focuses on low-level programming concepts and manual memory management.
@@ -11,7 +11,7 @@ The player moves between interconnected rooms, encounters enemies, and progresse
 
 The game world is built at runtime using dynamic data structures instead of static arrays.
 
-#Technical Concepts
+# Technical Concepts
 This project demonstrates practical use of:
 
 - Pointers
