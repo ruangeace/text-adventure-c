@@ -4,7 +4,7 @@ Text-based adventure game written in C as a university project.
 The project focuses on low-level programming concepts and manual memory management.
 The game runs entirely in the terminal and emphasizes logic, data structures, and system design rather than graphics.
 
-Overview
+* Overview
 
 The gameplay is inspired by classic dungeon exploration games.
 The player moves between interconnected rooms, encounters enemies, and progresses through a dynamically generated environment.
