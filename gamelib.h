@@ -1,108 +1,101 @@
-/// // Dichiarazione delle funzioni da chiamare in main.c
-// Definizione dei tipi necessari alla libreria
-#include<stdbool.h>
 
-void logo();
-void imposta_gioco();
-void gioca();
-void termina_gioco();
-void crediti();
+#include <stdbool.h>
 
+// Function prototypes to be called in main.c
+void display_logo();
+void setup_game();
+void start_game();
+void end_game();
+void credits();
 
-
-
-
-enum classe_giocatore{
-    principe = 1,
-    doppleganger = 2,
+// Library type definitions
+enum player_class {
+    prince = 1,
+    doppelganger = 2,
 };
 
-
-enum Tipo_stanza{
-    corridoio,
-    scala, 
-    sala_banchetto,        
-    magazzino,
-    posto_guardia,
-    prigione,
-    armeria,
-    mosche,
-    torre, 
-    bagno,
+enum Room_type {
+    corridor,
+    stairs,
+    banquet_hall,
+    warehouse,
+    guard_post,
+    prison,
+    armory,
+    flies,
+    tower,
+    bathroom,
 };
 
-enum Tipo_trabocchetto{
-    nessuno, 
-    tegola,
-    lame,
-    caduta,
-    burrone,
+enum Trap_type {
+    none,
+    tile,
+    blades,
+    fall,
+    pitfall,
 };
 
-enum Tipo_tesoro{
-    nessun_tesoro,
-    verde_veleno,
-    blu_guarigione, 
-    rosso_aumenta_vita,
-    spada_tagliente,
-    scudo,
-
-
+enum Treasure_type {
+    no_treasure,
+    green_poison,
+    blue_healing,
+    red_max_health,
+    sharp_sword,
+    shield,
 };
 
-enum Tipo_nemico{
-    schelettro, guardia, Jaffar,
+enum Enemy_type {
+    skeleton, 
+    guard, 
+    Jaffar,
 };
 
-struct Giocatore
-{
-    char nome[30];
-    enum classe_giocatore classe;
-    struct Stanza *posizione;
-    struct Stanza *stanzaPrecedente;
-    int fughe;// nella funzione scappa
-    bool azione; 
-    bool primoTrabocchetto;// ignora il primo trabocchetto se e' un principe
-    bool vincitore;
-    unsigned char p_vita_max;
-    unsigned char p_vita;
-    unsigned char dadi_attaco;
-    unsigned char dadi_difesa;
-
+struct Player {
+    char name[30];
+    enum player_class p_class;
+    struct Room *position;
+    struct Room *previous_room;
+    int escapes;              // Used in escape function
+    bool has_acted; 
+    bool first_trap_ignored;  // If prince, ignores the first trap
+    bool is_winner;
+    unsigned char max_hp;
+    unsigned char hp;
+    unsigned char attack_dice;
+    unsigned char defense_dice;
 };
 
-struct Stanza{
-    struct Stanza* stanza_destra;
-    struct Stanza* stanza_sinistra;
-    struct Stanza* stanza_sopra;
-    struct Stanza* stanza_sotto;
-    struct Stanza* next;
-    int riferimento_stanza; // il numero della stanza quando si stampa le sue informazioni
-    bool tesoroPreso;
-    bool trabocchettoAttivato;
-    enum Tipo_stanza tipo_stanza;
-    enum Tipo_trabocchetto tipo_trabocchetto;
-    enum Tipo_tesoro tipo_tesoro;
-    enum Tipo_nemico tipoNemico;
-     struct Nemico* nemico;
-    bool nemicoVivo;
-    bool primo_tentativo;
-    bool secondo_tentativo;
-    bool terzo_tentativo;
-    bool isGiocatore;
-
+struct Room {
+    struct Room* right;
+    struct Room* left;
+    struct Room* up;
+    struct Room* down;
+    struct Room* next;
+    int room_id;              // Room number used when printing info
+    bool treasure_taken;
+    bool trap_activated;
+    enum Room_type type_stanza;
+    enum Trap_type trap_type;
+    enum Treasure_type treasure_type;
+    enum Enemy_type enemy_type;
+    struct Enemy* enemy;
+    bool enemy_alive;
+    bool first_attempt;
+    bool second_attempt;
+    bool third_attempt;
+    bool is_player;
 };
 
-struct Nemico{
-    enum Tipo_nemico tipo_nemico;
-    unsigned char vitaNemico;
-    unsigned char dadiAtacco;
-    unsigned char dadiDifesa;
-
+struct Enemy {
+    enum Enemy_type type;
+    unsigned char hp;
+    unsigned char attack_dice;
+    unsigned char defense_dice;
 };
 
-enum colors{BLACK, RED, GREEN, YELLOW, BLUE, PURPLE, CYAN, WHITE};
-void setColor(enum colors color);
-void resetColor(); 
-// Definizione dei tipi necessari alla libreria
+// Console colors and styling
+enum colors { BLACK, RED, GREEN, YELLOW, BLUE, PURPLE, CYAN, WHITE };
+void set_color(enum colors color);
+void reset_color();
+
 
