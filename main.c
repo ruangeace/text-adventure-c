@@ -4,85 +4,77 @@
 
 //modifica
 
+int main() {
+    unsigned short int choice;
 
+    // Display the initial game logo
+    display_logo();
 
+    // Clear the screen after the logo
+    system("clear");
 
+    do {
+        printf("**-----------------------------------**");
+        set_color(PURPLE);
+        printf("\nWELCOME TO THE MAIN MENU\n");
+        printf("\nChoose one of the options below:\n");
+        
+        set_color(GREEN);
+        printf("1. Set up game\n");
+        
+        set_color(YELLOW);
+        printf("2. Play\n");
+        
+        set_color(RED);
+        printf("3. End game\n");
+        
+        set_color(CYAN);
+        printf("4. Credits\n");
+        
+        reset_color();
+        printf("\n**-----------------------------------**\n");
+        printf("Choice: ");
 
-
-
-
-int main(){
-
-unsigned short int scelta;
-
-logo();
-
-system("clear");
-
-
-
-do{
-    //system("clear");
-    
-    printf("**-----------------------------------**");
-    setColor(PURPLE);
-    printf("\nBENVENUTO AL MENU\n");
-    printf("\nScegliere una delle opzioni sotto:\n");
-    setColor(GREEN);
-    printf("1.Imposta gioco\n");
-    setColor(YELLOW);
-    printf("2.Giocare\n");
-    setColor(RED);
-    printf("3.Termina gioco\n");
-    setColor(CYAN);
-    printf("4.Crediti\n");
-    resetColor();
-    printf("\n**-----------------------------------**\n");
-    printf("Scelta : ");
-    if(scanf("%hu", &scelta)!= 1){
-            while(getchar() != '\n');
-            setColor(RED);
-            printf("Non vai inserito un numero valido. RIPROVA\n");
-            resetColor();
+        // Input validation for the menu choice
+        if (scanf("%hu", &choice) != 1) {
+            while (getchar() != '\n'); // Clear the input buffer
+            set_color(RED);
+            printf("You did not enter a valid number. TRY AGAIN\n");
+            reset_color();
             continue;
-         }
-        while(getchar() != '\n');
-        
+        }
+        while (getchar() != '\n'); // Consume the newline character
 
-    if( scelta <  1 || scelta > 4){
-        setColor(RED);
-        printf("Errore. il numero deve essere compresso tra 1 e 4\n");
-        resetColor();
-    }
+        // Check if the choice is within the valid range
+        if (choice < 1 || choice > 4) {
+            set_color(RED);
+            printf("Error. The number must be between 1 and 4\n");
+            reset_color();
+        }
 
+        // Logic to trigger the translated functions
+        switch (choice) {
+            case 1: 
+                setup_game();
+                break;
 
-    switch(scelta){
-        
-        case 1: 
-        imposta_gioco();
-        break;
+            case 2:
+                start_game();
+                break;
 
-        case 2:
-        gioca();
-        break;
+            case 3:
+                end_game();
+                break;
 
-        case 3:
-        termina_gioco();
-        break;
+            case 4:
+                credits();
+                break;
 
-        case 4:
-        crediti();
-        break;
+            default:
+                break;
+        }
 
-    }
-    
+    } while (1); // The loop continues until the exit(0) is triggered inside end_game()
 
-
-
-
-
-
-
-}while(1); // il gioco non finisce finche' il giocatore e' sicuro di finire il programma nella funzione termina gioco
-
+    return 0;
 }
