@@ -11,17 +11,16 @@ The player moves between interconnected rooms, encounters enemies, and progresse
 
 The game world is built at runtime using dynamic data structures instead of static arrays.
 
-#Technical Concepts#
-
+#Technical Concepts
 This project demonstrates practical use of:
 
--Pointers
--Dynamic memory allocation (malloc, free)
--Singly linked lists
--Struct-based data modeling
--Modular programming (multiple source files)
--Game state management
--Manual memory lifecycle control
+- Pointers
+- Dynamic memory allocation (malloc, free)
+- Singly linked lists
+- Struct-based data modeling
+- Modular programming (multiple source files)
+- Game state management
+- Manual memory lifecycle control
 
 Rooms, enemies, and progression are represented through linked structures.
 Each room contains directional connections implemented through pointers, requiring careful navigation and memory handling.
